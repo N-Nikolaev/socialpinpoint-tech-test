@@ -1,5 +1,7 @@
+import { SearchIcon } from '@chakra-ui/icons'
 import { Checkbox } from '@chakra-ui/checkbox'
 import { FormControl, FormLabel } from '@chakra-ui/form-control'
+import { InputGroup, Input, InputRightElement } from '@chakra-ui/input'
 import { 
   Box,
   Flex, 
@@ -11,17 +13,18 @@ import { NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepp
 import { Select } from '@chakra-ui/select'
 import React from 'react'
 import InputCard from './components/InputCard/InputCard'
+import { Button } from '@chakra-ui/react'
 
 const App: React.FC = () => {
 
 //TODO Text and Layer Styles
   return (
-    <Flex h='100vh' background='gray.100' p={10}>
-      <Stack>
+    <Flex minh='100vh' background='gray.100' p={10}>
+      <Stack spacing={6}>
 
         <InputCard number={1} title='Dates and Room'>
           <HStack>
-            <FormControl id='check-in'>
+            <FormControl id='checkIn'>
               <FormLabel fontSize='sm'>
                 Check-in
               </FormLabel>
@@ -36,7 +39,7 @@ const App: React.FC = () => {
               </Select>
             </FormControl>
 
-            <FormControl id='check-out'>
+            <FormControl id='checkOut'>
               <FormLabel fontSize='sm'>
                 Check-out
               </FormLabel>
@@ -51,7 +54,7 @@ const App: React.FC = () => {
               </Select>
             </FormControl>
 
-            <FormControl id='Nights' w='fit-content'>
+            <FormControl id='nights' w='fit-content'>
               <FormLabel fontSize='sm'>
                 Nights
               </FormLabel>
@@ -69,7 +72,7 @@ const App: React.FC = () => {
               </NumberInput>
             </FormControl>
 
-            <FormControl id='Rooms' w='fit-content'>
+            <FormControl id='rooms' w='fit-content'>
               <FormLabel fontSize='sm'>
                 Rooms
               </FormLabel>
@@ -95,7 +98,6 @@ const App: React.FC = () => {
         </InputCard>
 
         <InputCard number={2} title='Room Requirements'>
-
           <Flex>
 {/* //TODO State: Room */}
             <Text
@@ -117,7 +119,7 @@ const App: React.FC = () => {
           </Flex>
 
           <HStack>
-            <FormControl id='Adults' w='fit-content'>
+            <FormControl id='adults' w='fit-content'>
               <FormLabel fontSize='sm'>
                 Adults
               </FormLabel>
@@ -174,7 +176,7 @@ const App: React.FC = () => {
               </NumberInput>
             </FormControl>
           
-            <FormControl id='room-type'>
+            <FormControl id='roomType'>
               <FormLabel fontSize='sm'>
                 Room type
               </FormLabel>
@@ -189,7 +191,7 @@ const App: React.FC = () => {
               </Select>
             </FormControl>
 
-            <FormControl id='room-allocation'>
+            <FormControl id='roomAllocation'>
               <FormLabel fontSize='sm'>
                 Room allocation
               </FormLabel>
@@ -207,7 +209,68 @@ const App: React.FC = () => {
         </InputCard>
 
         <InputCard number={3} title='Guest Details'>
+          <FormControl id='company'>
+            <FormLabel fontSize='sm'>
+              Company
+            </FormLabel>
 
+            <InputGroup 
+              bg='gray.50' 
+              fontSize='sm'>
+              <Input />
+              <InputRightElement>
+                <Button variant='ghost'>
+                  <SearchIcon color='gray.500'/>
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+          </FormControl>
+
+          <Flex>
+            <Text
+              px={1}
+              fontSize='xs'
+              fontWeight='bold'
+              color='gray.600'
+              background='gray.200'
+              rounded={2}>
+              Room 1
+            </Text>
+          </Flex>
+
+          <HStack>
+            <FormControl id='title' w='fit-content'>
+              <FormLabel fontSize='sm'>
+                Title
+              </FormLabel>
+
+              <Select 
+                placeholder=''
+                bg='gray.50' 
+                fontSize='sm'>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </Select>
+            </FormControl>
+
+            <FormControl id='firstAndLastName'>
+              <FormLabel fontSize='sm'>
+                First and last name
+              </FormLabel>
+
+              <InputGroup 
+                bg='gray.50' 
+                fontSize='sm'>
+                <Input />
+                <InputRightElement>
+                  <Button variant='ghost'>
+                    <SearchIcon color='gray.500'/>
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </FormControl>
+          </HStack>
         </InputCard>
 
       </Stack>

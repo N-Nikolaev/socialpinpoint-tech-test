@@ -19,7 +19,7 @@ const InputCard: React.FC<IProps> = ({
     return (
         <Stack 
             direction='column'
-            spacing={4}
+            spacing={5}
             h='max-content'
             p={8} 
             bg='white' 
