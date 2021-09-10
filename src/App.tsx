@@ -3,7 +3,6 @@ import { Checkbox } from '@chakra-ui/checkbox'
 import { FormControl, FormLabel } from '@chakra-ui/form-control'
 import { InputGroup, Input, InputRightElement } from '@chakra-ui/input'
 import { 
-  Box,
   Flex, 
   HStack, 
   Spacer, 
@@ -11,31 +10,89 @@ import {
   Text } from '@chakra-ui/layout'
 import { NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper } from '@chakra-ui/number-input'
 import { Select } from '@chakra-ui/select'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import InputCard from './components/InputCard/InputCard'
 import { Button } from '@chakra-ui/react'
 
+interface InputCardData {
+  data: {
+    cardNumber: number
+    cardTitle: string
+  }[]
+}
+
+interface DatesAndRoomCardData {
+  data: {
+    checkInDates: string[]
+    checkOutDates: string[]
+    nightsAmount: number
+    roomsAmount: number
+    selectedCheckInDate: string
+    selectedCheckOutDate: string
+    selectedNightsAmount: number
+    selectedRoomsAmount: number
+    tentativeReservation: boolean
+  }
+}
+
 const App: React.FC = () => {
+  
+  const [inputCardData] = useState<InputCardData['data']>([
+    {cardNumber: 1, cardTitle: 'Dates and Room'},
+    {cardNumber: 2, cardTitle: 'Room Requirements'},
+    {cardNumber: 3, cardTitle: 'Guest Details'},
+  ])
+
+  const [datesAndRoomCardData, setdatesAndRoomCardData] = useState<DatesAndRoomCardData['data']>({
+    checkInDates: [
+      'Tue 2 Mar 2021',
+      'Wed 3 Mar 2021',
+    ],
+    checkOutDates: [
+      'Wed 3 Mar 2021',
+      'Thur 4 Mar 2021',
+    ],
+    nightsAmount: 7,
+    roomsAmount: 30,
+    selectedCheckInDate: 'Tue 2 Mar 2021',
+    selectedCheckOutDate: 'Wed 5 Mar 2021',
+    selectedNightsAmount: 1,
+    selectedRoomsAmount: 0,
+    tentativeReservation: false,
+  })
+
+//! Clean Up useEffect after testing
+  useEffect(() => {
+    console.log(datesAndRoomCardData.selectedNightsAmount)
+  }, [datesAndRoomCardData.selectedNightsAmount])
 
 //TODO Text and Layer Styles
+//TODO onChange functions
   return (
-    <Flex minh='100vh' background='gray.100' p={10}>
+    <Flex minH='100vh' background='gray.100' p={10}>
       <Stack spacing={6}>
 
-        <InputCard number={1} title='Dates and Room'>
+        <InputCard number={inputCardData[0].cardNumber} title={inputCardData[0].cardTitle}>
           <HStack>
             <FormControl id='checkIn'>
               <FormLabel fontSize='sm'>
                 Check-in
               </FormLabel>
 
-{/* //TODO State: Check-in dates */}
               <Select 
                 bg='gray.50' 
-                fontSize='sm'>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                fontSize='sm'
+                onChange={ e => setdatesAndRoomCardData({
+                  ...datesAndRoomCardData,
+                  selectedCheckInDate: e.target.value
+                })}>
+                {datesAndRoomCardData
+                  .checkInDates
+                  .map((date, idx) => {
+                    return (
+                      <option key={idx} value={date}>{date}</option>
+                    )
+                  })}
               </Select>
             </FormControl>
 
@@ -44,13 +101,20 @@ const App: React.FC = () => {
                 Check-out
               </FormLabel>
 
-{/* //TODO State: Check-out dates */}
               <Select 
                 bg='gray.50' 
-                fontSize='sm'>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                fontSize='sm'
+                onChange={ e => setdatesAndRoomCardData({
+                  ...datesAndRoomCardData,
+                  selectedCheckOutDate: e.target.value
+                })}>
+                {datesAndRoomCardData
+                  .checkOutDates
+                  .map((date, idx) => {
+                    return (
+                      <option key={idx} value={date}>{date}</option>
+                    )
+                  })}
               </Select>
             </FormControl>
 
@@ -62,9 +126,14 @@ const App: React.FC = () => {
               <NumberInput 
                 defaultValue={1}
                 min={0} 
+                max={datesAndRoomCardData.nightsAmount}
                 bg='gray.50' 
-                fontSize='sm'>
-                <NumberInputField />
+                fontSize='sm'
+                onChange={ num => setdatesAndRoomCardData({
+                  ...datesAndRoomCardData,
+                  selectedNightsAmount: parseInt(num)
+                })}>
+                <NumberInputField/>
                 <NumberInputStepper>
                   <NumberIncrementStepper />
                   <NumberDecrementStepper />
@@ -81,8 +150,13 @@ const App: React.FC = () => {
                 isDisabled 
                 defaultValue={0}
                 min={0} 
+                max={datesAndRoomCardData.roomsAmount}
                 bg='gray.50' 
-                fontSize='sm'>
+                fontSize='sm'
+                onChange={ num => setdatesAndRoomCardData({
+                  ...datesAndRoomCardData,
+                  selectedRoomsAmount: parseInt(num)
+                })}>
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -92,7 +166,10 @@ const App: React.FC = () => {
             </FormControl>
           </HStack>
 
-          <Checkbox>
+          <Checkbox onChange={ _ => setdatesAndRoomCardData({
+            ...datesAndRoomCardData,
+            tentativeReservation: !datesAndRoomCardData.tentativeReservation
+          })}>
             <Text fontSize='sm'>Tentative Reservation</Text>
           </Checkbox>
         </InputCard>
