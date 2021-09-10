@@ -1,4 +1,8 @@
-import { Heading, Stack, HStack, Box } from '@chakra-ui/layout'
+import { 
+    Heading, 
+    Stack, 
+    HStack, 
+    Box } from '@chakra-ui/layout'
 import React from 'react'
 
 interface IProps {
@@ -15,20 +19,22 @@ const InputCard: React.FC<IProps> = ({
     return (
         <Stack 
             direction='column'
+            spacing={4}
             h='max-content'
             p={8} 
-            background='white' 
-            rounded={4} >
+            bg='white' 
+            rounded={4}
+            shadow='sm'>
             
 
             <HStack>
                 <Box
-                    w='5'
-                    h='5'
+                    w={5}
+                    h={5}
                     fontSize='xs'
                     color='white'
                     textAlign='center'
-                    background='blue.500'
+                    bg='blue.500'
                     rounded='full'>
                     {number}</Box>
 
@@ -39,9 +45,7 @@ const InputCard: React.FC<IProps> = ({
             </HStack>
             
 
-            <HStack>
-                {children}
-            </HStack>
+            {children}
             
         </Stack>
     )
