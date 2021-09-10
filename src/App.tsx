@@ -35,6 +35,22 @@ interface DatesAndRoomCardData {
   }
 }
 
+interface RoomRequirementsCardData {
+  data: {
+    doNotMove: boolean
+    adultsAmount: number
+    childrenAmount: number
+    infantAmount: number
+    roomType: string[]
+    roomAllocation: number[]
+    selectedAdultsAmount: number
+    selectedChildrenAmount: number
+    selectedInfantsAmount: number
+    selectedRoomType: string
+    selectedRoomAllocation: number    
+  }
+}
+
 const App: React.FC = () => {
   
   const [inputCardData] = useState<InputCardData['data']>([
@@ -43,7 +59,7 @@ const App: React.FC = () => {
     {cardNumber: 3, cardTitle: 'Guest Details'},
   ])
 
-  const [datesAndRoomCardData, setdatesAndRoomCardData] = useState<DatesAndRoomCardData['data']>({
+  const [datesAndRoomCardData, setDatesAndRoomCardData] = useState<DatesAndRoomCardData['data']>({
     checkInDates: [
       'Tue 2 Mar 2021',
       'Wed 3 Mar 2021',
@@ -61,10 +77,30 @@ const App: React.FC = () => {
     tentativeReservation: false,
   })
 
+  const [roomRequirementsCardData, setRoomRequirementsCardData] = useState<RoomRequirementsCardData['data']>({
+    doNotMove: false,
+    adultsAmount: 6,
+    childrenAmount: 6,
+    infantAmount: 6,
+    roomType: [
+      'King Twin Room',
+    ],
+    roomAllocation: [
+      12,
+      13, 
+      14,
+    ],
+    selectedAdultsAmount: 0,
+    selectedChildrenAmount: 0,
+    selectedInfantsAmount: 0,
+    selectedRoomType: 'King Twin Room',
+    selectedRoomAllocation: 12,  
+  })
+
 //! Clean Up useEffect after testing
   useEffect(() => {
-    console.log(datesAndRoomCardData.selectedNightsAmount)
-  }, [datesAndRoomCardData.selectedNightsAmount])
+    console.log(datesAndRoomCardData, roomRequirementsCardData)
+  }, [datesAndRoomCardData, roomRequirementsCardData])
 
 //TODO Text and Layer Styles
 //TODO onChange functions
@@ -82,7 +118,7 @@ const App: React.FC = () => {
               <Select 
                 bg='gray.50' 
                 fontSize='sm'
-                onChange={ e => setdatesAndRoomCardData({
+                onChange={ e => setDatesAndRoomCardData({
                   ...datesAndRoomCardData,
                   selectedCheckInDate: e.target.value
                 })}>
@@ -104,7 +140,7 @@ const App: React.FC = () => {
               <Select 
                 bg='gray.50' 
                 fontSize='sm'
-                onChange={ e => setdatesAndRoomCardData({
+                onChange={ e => setDatesAndRoomCardData({
                   ...datesAndRoomCardData,
                   selectedCheckOutDate: e.target.value
                 })}>
@@ -129,7 +165,7 @@ const App: React.FC = () => {
                 max={datesAndRoomCardData.nightsAmount}
                 bg='gray.50' 
                 fontSize='sm'
-                onChange={ num => setdatesAndRoomCardData({
+                onChange={ num => setDatesAndRoomCardData({
                   ...datesAndRoomCardData,
                   selectedNightsAmount: parseInt(num)
                 })}>
@@ -153,7 +189,7 @@ const App: React.FC = () => {
                 max={datesAndRoomCardData.roomsAmount}
                 bg='gray.50' 
                 fontSize='sm'
-                onChange={ num => setdatesAndRoomCardData({
+                onChange={ num => setDatesAndRoomCardData({
                   ...datesAndRoomCardData,
                   selectedRoomsAmount: parseInt(num)
                 })}>
@@ -166,7 +202,7 @@ const App: React.FC = () => {
             </FormControl>
           </HStack>
 
-          <Checkbox onChange={ _ => setdatesAndRoomCardData({
+          <Checkbox onChange={ _ => setDatesAndRoomCardData({
             ...datesAndRoomCardData,
             tentativeReservation: !datesAndRoomCardData.tentativeReservation
           })}>
@@ -174,9 +210,8 @@ const App: React.FC = () => {
           </Checkbox>
         </InputCard>
 
-        <InputCard number={2} title='Room Requirements'>
+        <InputCard number={inputCardData[1].cardNumber} title={inputCardData[1].cardTitle}>
           <Flex>
-{/* //TODO State: Room */}
             <Text
               px={1}
               fontSize='xs'
@@ -189,7 +224,10 @@ const App: React.FC = () => {
 
             <Spacer />
 
-            <Checkbox>
+            <Checkbox onChange={ _ => setRoomRequirementsCardData({
+              ...roomRequirementsCardData,
+              doNotMove: !roomRequirementsCardData.doNotMove
+            })}>
               <Text fontSize='sm'>Do not move</Text>
             </Checkbox>
 
@@ -204,9 +242,14 @@ const App: React.FC = () => {
               <NumberInput 
                 isDisabled 
                 defaultValue={0}
-                min={0} 
+                min={0}
+                max={roomRequirementsCardData.adultsAmount} 
                 bg='gray.50' 
-                fontSize='sm'>
+                fontSize='sm'
+                onChange={ num => setRoomRequirementsCardData({
+                  ...roomRequirementsCardData,
+                  selectedAdultsAmount: parseInt(num)
+                })}>
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -224,8 +267,13 @@ const App: React.FC = () => {
                 isDisabled 
                 defaultValue={0}
                 min={0} 
+                max={roomRequirementsCardData.childrenAmount}
                 bg='gray.50' 
-                fontSize='sm'>
+                fontSize='sm'
+                onChange={ num => setRoomRequirementsCardData({
+                  ...roomRequirementsCardData,
+                  selectedChildrenAmount: parseInt(num)
+                })}>
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -243,8 +291,13 @@ const App: React.FC = () => {
                 isDisabled 
                 defaultValue={0}
                 min={0} 
+                max={roomRequirementsCardData.infantAmount}
                 bg='gray.50' 
-                fontSize='sm'>
+                fontSize='sm'
+                onChange={ num => setRoomRequirementsCardData({
+                  ...roomRequirementsCardData,
+                  selectedInfantsAmount: parseInt(num)
+                })}>
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -258,13 +311,20 @@ const App: React.FC = () => {
                 Room type
               </FormLabel>
 
-{/* //TODO State: Room type */}
               <Select 
                 bg='gray.50' 
-                fontSize='sm'>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                fontSize='sm'
+                onChange={ e => setRoomRequirementsCardData({
+                  ...roomRequirementsCardData,
+                  selectedRoomType: e.target.value
+                })}>
+                {roomRequirementsCardData
+                  .roomType
+                  .map((type, idx) => {
+                    return (
+                      <option key={idx} value={type}>{type}</option>
+                    )
+                  })}
               </Select>
             </FormControl>
 
@@ -273,19 +333,26 @@ const App: React.FC = () => {
                 Room allocation
               </FormLabel>
 
-{/* //TODO State: Room allocation */}
               <Select 
                 bg='gray.50' 
-                fontSize='sm'>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                fontSize='sm'
+                onChange={ e => setRoomRequirementsCardData({
+                  ...roomRequirementsCardData,
+                  selectedRoomAllocation: parseInt(e.target.value)
+                })}>
+                 {roomRequirementsCardData
+                  .roomAllocation
+                  .map((allocation, idx) => {
+                    return (
+                      <option key={idx} value={allocation}>{allocation}</option>
+                    )
+                  })}
               </Select>
             </FormControl>
           </HStack>
         </InputCard>
 
-        <InputCard number={3} title='Guest Details'>
+        <InputCard number={inputCardData[2].cardNumber} title={inputCardData[2].cardTitle}>
           <FormControl id='company'>
             <FormLabel fontSize='sm'>
               Company
