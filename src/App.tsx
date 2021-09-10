@@ -1,4 +1,5 @@
 import { Checkbox } from '@chakra-ui/checkbox'
+import { FormControl, FormLabel } from '@chakra-ui/form-control'
 import { 
   Box,
   Flex, 
@@ -20,10 +21,10 @@ const App: React.FC = () => {
 
         <InputCard number={1} title='Dates and Room'>
           <HStack>
-            <Stack>
-              <Text fontSize='sm'>
+            <FormControl id='check-in'>
+              <FormLabel fontSize='sm'>
                 Check-in
-              </Text>
+              </FormLabel>
 
 {/* //TODO State: Check-in dates */}
               <Select 
@@ -33,12 +34,12 @@ const App: React.FC = () => {
                 <option value="option2">Option 2</option>
                 <option value="option3">Option 3</option>
               </Select>
-            </Stack>
+            </FormControl>
 
-            <Stack>
-              <Text fontSize='sm'>
+            <FormControl id='check-out'>
+              <FormLabel fontSize='sm'>
                 Check-out
-              </Text>
+              </FormLabel>
 
 {/* //TODO State: Check-out dates */}
               <Select 
@@ -48,12 +49,12 @@ const App: React.FC = () => {
                 <option value="option2">Option 2</option>
                 <option value="option3">Option 3</option>
               </Select>
-            </Stack>
+            </FormControl>
 
-            <Stack>
-              <Text fontSize='sm'>
+            <FormControl id='Nights' w='fit-content'>
+              <FormLabel fontSize='sm'>
                 Nights
-              </Text>
+              </FormLabel>
               
               <NumberInput 
                 defaultValue={1}
@@ -66,12 +67,12 @@ const App: React.FC = () => {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
-            </Stack>
+            </FormControl>
 
-            <Stack>
-              <Text fontSize='sm'>
+            <FormControl id='Rooms' w='fit-content'>
+              <FormLabel fontSize='sm'>
                 Rooms
-              </Text>
+              </FormLabel>
               
               <NumberInput 
                 isDisabled 
@@ -85,7 +86,7 @@ const App: React.FC = () => {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
-            </Stack>
+            </FormControl>
           </HStack>
 
           <Checkbox>
@@ -116,10 +117,10 @@ const App: React.FC = () => {
           </Flex>
 
           <HStack>
-            <Stack>
-              <Text fontSize='sm'>
+            <FormControl id='Adults' w='fit-content'>
+              <FormLabel fontSize='sm'>
                 Adults
-              </Text>
+              </FormLabel>
               
               <NumberInput 
                 isDisabled 
@@ -133,12 +134,12 @@ const App: React.FC = () => {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
-            </Stack>
+            </FormControl>
 
-            <Stack>
-              <Text fontSize='sm'>
+            <FormControl id='children' w='fit-content'>
+              <FormLabel fontSize='sm'>
                 Children
-              </Text>
+              </FormLabel>
               
               <NumberInput 
                 isDisabled 
@@ -152,12 +153,12 @@ const App: React.FC = () => {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
-            </Stack>
+            </FormControl>
 
-            <Stack>
-              <Text fontSize='sm'>
+            <FormControl id='infant' w='fit-content'>
+              <FormLabel fontSize='sm'>
                 Infant
-              </Text>
+              </FormLabel>
               
               <NumberInput 
                 isDisabled 
@@ -171,12 +172,12 @@ const App: React.FC = () => {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
-            </Stack>
+            </FormControl>
           
-            <Stack>
-              <Text fontSize='sm'>
+            <FormControl id='room-type'>
+              <FormLabel fontSize='sm'>
                 Room type
-              </Text>
+              </FormLabel>
 
 {/* //TODO State: Room type */}
               <Select 
@@ -186,12 +187,12 @@ const App: React.FC = () => {
                 <option value="option2">Option 2</option>
                 <option value="option3">Option 3</option>
               </Select>
-            </Stack>
+            </FormControl>
 
-            <Stack>
-              <Text fontSize='sm'>
+            <FormControl id='room-allocation'>
+              <FormLabel fontSize='sm'>
                 Room allocation
-              </Text>
+              </FormLabel>
 
 {/* //TODO State: Room allocation */}
               <Select 
@@ -201,11 +202,13 @@ const App: React.FC = () => {
                 <option value="option2">Option 2</option>
                 <option value="option3">Option 3</option>
               </Select>
-            </Stack>
+            </FormControl>
           </HStack>
         </InputCard>
 
-        <InputCard number={3} title='Guest Details'>Text</InputCard>
+        <InputCard number={3} title='Guest Details'>
+
+        </InputCard>
 
       </Stack>
     </Flex>
