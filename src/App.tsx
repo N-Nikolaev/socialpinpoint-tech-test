@@ -3,6 +3,7 @@ import { Checkbox } from '@chakra-ui/checkbox'
 import { FormControl, FormLabel } from '@chakra-ui/form-control'
 import { InputGroup, Input, InputRightElement } from '@chakra-ui/input'
 import { 
+  Box,
   Flex, 
   HStack, 
   Spacer, 
@@ -12,6 +13,7 @@ import { NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepp
 import { Select } from '@chakra-ui/select'
 import React, { useState } from 'react'
 import InputCard from './components/InputCard/InputCard'
+import Taskbar from './components/Taskbar/Taskbar'
 
 
 interface InputCardData {
@@ -119,7 +121,8 @@ const App: React.FC = () => {
   })
 
   return (
-    <Flex minH='100vh' background='gray.100' p={10}>
+    <>
+    <Flex background='gray.100' p={10}>
       <Stack spacing={6}>
 
         <InputCard number={inputCardData[0].cardNumber} title={inputCardData[0].cardTitle}>
@@ -443,7 +446,13 @@ const App: React.FC = () => {
         </InputCard>
 
       </Stack>
+    
     </Flex>
+
+    <Box>
+      <Taskbar />
+    </Box>
+    </>
   )
 }
 
