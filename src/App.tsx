@@ -1,9 +1,10 @@
 import React from 'react'
+import InputCard from './components/InputCard/InputCard'
 
 const App: React.FC = () => {
   return (
     <div>
-      Hello World
+      <InputCard />
     </div>
   )
 }
