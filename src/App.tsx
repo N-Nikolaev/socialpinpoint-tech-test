@@ -3,6 +3,7 @@ import {
   Box,
   Flex, 
   HStack, 
+  Spacer, 
   Stack,
   Text } from '@chakra-ui/layout'
 import { NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper } from '@chakra-ui/number-input'
@@ -93,6 +94,27 @@ const App: React.FC = () => {
         </InputCard>
 
         <InputCard number={2} title='Room Requirements'>
+
+          <Flex>
+{/* //TODO State: Room */}
+            <Text
+              px={1}
+              fontSize='xs'
+              fontWeight='bold'
+              color='gray.600'
+              background='gray.200'
+              rounded={2}>
+              Room 1
+            </Text>
+
+            <Spacer />
+
+            <Checkbox>
+              <Text fontSize='sm'>Do not move</Text>
+            </Checkbox>
+
+          </Flex>
+
           <HStack>
             <Stack>
               <Text fontSize='sm'>
@@ -149,6 +171,36 @@ const App: React.FC = () => {
                   <NumberDecrementStepper />
                 </NumberInputStepper>
               </NumberInput>
+            </Stack>
+          
+            <Stack>
+              <Text fontSize='sm'>
+                Room type
+              </Text>
+
+{/* //TODO State: Room type */}
+              <Select 
+                bg='gray.50' 
+                fontSize='sm'>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </Select>
+            </Stack>
+
+            <Stack>
+              <Text fontSize='sm'>
+                Room allocation
+              </Text>
+
+{/* //TODO State: Room allocation */}
+              <Select 
+                bg='gray.50' 
+                fontSize='sm'>
+                <option value="option1">Option 1</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+              </Select>
             </Stack>
           </HStack>
         </InputCard>
