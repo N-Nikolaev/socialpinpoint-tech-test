@@ -128,7 +128,9 @@ const App: React.FC = () => {
         <InputCard number={inputCardData[0].cardNumber} title={inputCardData[0].cardTitle}>
           <HStack>
             <FormControl id='checkIn'>
-              <FormLabel fontSize='sm'>
+              <FormLabel 
+                color='gray.700'
+                fontSize='sm'>
                 Check-in
               </FormLabel>
 
@@ -150,7 +152,9 @@ const App: React.FC = () => {
             </FormControl>
 
             <FormControl id='checkOut'>
-              <FormLabel fontSize='sm'>
+              <FormLabel 
+                color='gray.700'
+                fontSize='sm'>
                 Check-out
               </FormLabel>
 
@@ -172,7 +176,9 @@ const App: React.FC = () => {
             </FormControl>
 
             <FormControl id='nights' w='fit-content'>
-              <FormLabel fontSize='sm'>
+              <FormLabel 
+                color='gray.700'
+                fontSize='sm'>
                 Nights
               </FormLabel>
               
@@ -195,7 +201,9 @@ const App: React.FC = () => {
             </FormControl>
 
             <FormControl id='rooms' w='fit-content'>
-              <FormLabel fontSize='sm'>
+              <FormLabel 
+                color='gray.700'
+                fontSize='sm'>
                 Rooms
               </FormLabel>
               
@@ -252,7 +260,9 @@ const App: React.FC = () => {
 
           <HStack>
             <FormControl id='adults' w='fit-content'>
-              <FormLabel fontSize='sm'>
+              <FormLabel 
+                color='gray.700'
+                fontSize='sm'>
                 Adults
               </FormLabel>
               
@@ -276,7 +286,9 @@ const App: React.FC = () => {
             </FormControl>
 
             <FormControl id='children' w='fit-content'>
-              <FormLabel fontSize='sm'>
+              <FormLabel 
+                color='gray.700'
+                fontSize='sm'>
                 Children
               </FormLabel>
               
@@ -300,7 +312,9 @@ const App: React.FC = () => {
             </FormControl>
 
             <FormControl id='infant' w='fit-content'>
-              <FormLabel fontSize='sm'>
+              <FormLabel 
+                color='gray.700'
+                fontSize='sm'>
                 Infant
               </FormLabel>
               
@@ -324,7 +338,9 @@ const App: React.FC = () => {
             </FormControl>
           
             <FormControl id='roomType'>
-              <FormLabel fontSize='sm'>
+              <FormLabel 
+                color='gray.700'
+                fontSize='sm'>
                 Room type
               </FormLabel>
 
@@ -346,7 +362,9 @@ const App: React.FC = () => {
             </FormControl>
 
             <FormControl id='roomAllocation'>
-              <FormLabel fontSize='sm'>
+              <FormLabel 
+                color='gray.700'
+                fontSize='sm'>
                 Room allocation
               </FormLabel>
 
@@ -371,7 +389,9 @@ const App: React.FC = () => {
 
         <InputCard number={inputCardData[2].cardNumber} title={inputCardData[2].cardTitle}>
           <FormControl id='company'>
-            <FormLabel fontSize='sm'>
+            <FormLabel 
+              color='gray.700'
+              fontSize='sm'>
               Company
             </FormLabel>
 
@@ -403,7 +423,9 @@ const App: React.FC = () => {
 
           <HStack>
             <FormControl id='title' minW='100px' w='fit-content'>
-              <FormLabel fontSize='sm'>
+              <FormLabel 
+                color='gray.700'
+                fontSize='sm'>
                 Title
               </FormLabel>
 
@@ -425,7 +447,9 @@ const App: React.FC = () => {
             </FormControl>
 
             <FormControl id='firstAndLastName'>
-              <FormLabel fontSize='sm'>
+              <FormLabel 
+                color='gray.700'
+                fontSize='sm'>
                 First and last name
               </FormLabel>
 
@@ -449,9 +473,7 @@ const App: React.FC = () => {
     
     </Flex>
 
-    <Box>
-      <Taskbar />
-    </Box>
+    <Taskbar />
     </>
   )
 }
