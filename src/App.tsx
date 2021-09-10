@@ -10,9 +10,9 @@ import {
   Text } from '@chakra-ui/layout'
 import { NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper } from '@chakra-ui/number-input'
 import { Select } from '@chakra-ui/select'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import InputCard from './components/InputCard/InputCard'
-import { Button } from '@chakra-ui/react'
+
 
 interface InputCardData {
   data: {
@@ -48,6 +48,15 @@ interface RoomRequirementsCardData {
     selectedInfantsAmount: number
     selectedRoomType: string
     selectedRoomAllocation: number    
+  }
+}
+
+interface GuestDetailsCardData {
+  data: {
+    companyResult: string
+    firstAndLastName: string
+    titleList: string[]
+    selectedTitle: string
   }
 }
 
@@ -97,13 +106,18 @@ const App: React.FC = () => {
     selectedRoomAllocation: 12,  
   })
 
-//! Clean Up useEffect after testing
-  useEffect(() => {
-    console.log(datesAndRoomCardData, roomRequirementsCardData)
-  }, [datesAndRoomCardData, roomRequirementsCardData])
+  const [guestDetailsCardData, setGuestDetailsCardData] = useState<GuestDetailsCardData['data']>({
+    companyResult: '',
+    firstAndLastName: '',
+    titleList: [
+      '',
+      'Mr',
+      'Mrs',
+      'Ms',
+    ],
+    selectedTitle: '',
+  })
 
-//TODO Text and Layer Styles
-//TODO onChange functions
   return (
     <Flex minH='100vh' background='gray.100' p={10}>
       <Stack spacing={6}>
@@ -361,11 +375,13 @@ const App: React.FC = () => {
             <InputGroup 
               bg='gray.50' 
               fontSize='sm'>
-              <Input />
+              <Input 
+                onChange={e => setGuestDetailsCardData({
+                  ...guestDetailsCardData,
+                  companyResult: e.target.value
+                })}/>
               <InputRightElement>
-                <Button variant='ghost'>
-                  <SearchIcon color='gray.500'/>
-                </Button>
+                <SearchIcon color='gray.500'/>
               </InputRightElement>
             </InputGroup>
           </FormControl>
@@ -383,18 +399,25 @@ const App: React.FC = () => {
           </Flex>
 
           <HStack>
-            <FormControl id='title' w='fit-content'>
+            <FormControl id='title' minW='100px' w='fit-content'>
               <FormLabel fontSize='sm'>
                 Title
               </FormLabel>
 
-              <Select 
-                placeholder=''
+              <Select
                 bg='gray.50' 
-                fontSize='sm'>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                fontSize='sm'
+                onChange={e => setGuestDetailsCardData({
+                  ...guestDetailsCardData,
+                  selectedTitle: e.target.value
+                })}>
+                {guestDetailsCardData
+                .titleList
+                .map((title, idx) => {
+                  return (
+                    <option key={idx} value={title}>{title}</option>
+                  )
+                })}
               </Select>
             </FormControl>
 
@@ -406,11 +429,13 @@ const App: React.FC = () => {
               <InputGroup 
                 bg='gray.50' 
                 fontSize='sm'>
-                <Input />
+                <Input 
+                  onChange={e => setGuestDetailsCardData({
+                    ...guestDetailsCardData,
+                    firstAndLastName: e.target.value
+                  })}/>
                 <InputRightElement>
-                  <Button variant='ghost'>
-                    <SearchIcon color='gray.500'/>
-                  </Button>
+                  <SearchIcon color='gray.500'/>
                 </InputRightElement>
               </InputGroup>
             </FormControl>
