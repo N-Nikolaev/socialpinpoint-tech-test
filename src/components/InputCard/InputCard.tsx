@@ -1,9 +1,20 @@
-import { Heading, VStack, HStack, Box } from '@chakra-ui/layout'
+import { Heading, Stack, HStack, Box } from '@chakra-ui/layout'
 import React from 'react'
 
-const InputCard: React.FC = () => {
+interface IProps {
+    number: number
+    title: string
+    children?: React.ReactNode
+}
+
+const InputCard: React.FC<IProps> = ({
+    number,
+    title,
+    children
+}) => {
     return (
-        <VStack 
+        <Stack 
+            direction='column'
             h='max-content'
             p={8} 
             background='white' 
@@ -11,7 +22,6 @@ const InputCard: React.FC = () => {
             
 
             <HStack>
-//TODO Prop: number
                 <Box
                     w='5'
                     h='5'
@@ -20,24 +30,20 @@ const InputCard: React.FC = () => {
                     textAlign='center'
                     background='blue.500'
                     rounded='full'>
-                    1               
-                    </Box>
+                    {number}</Box>
 
-//TODO Prop: title
                 <Heading
                     fontSize='lg'
                     color='blue.500'>
-                    Dates and Room  
-                </Heading>
+                    {title}</Heading>
             </HStack>
             
 
             <HStack>
-//TODO Prop: children
-                
+                {children}
             </HStack>
             
-        </VStack>
+        </Stack>
     )
 }
 
