@@ -87,7 +87,20 @@ const OutputCard: React.FC = () => {
 
             <Divider />
 
-{/* //TODO Tax estimate */}
+            <Flex direction='row'>
+                <Text fontSize='sm'>
+                    Estimate City Tax (US)
+                </Text>
+
+                <Spacer />
+
+                <Text 
+                    fontSize='sm' 
+                    fontWeight='medium' 
+                    color='gray.400'>
+                    $0.00
+                </Text>
+            </Flex>
 
             <Divider />
 
