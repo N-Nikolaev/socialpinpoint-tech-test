@@ -81,8 +81,8 @@ const App: React.FC = () => {
     ],
     nightsAmount: 7,
     roomsAmount: 30,
-    selectedCheckInDate: 'Tue 2 Mar 2021',
-    selectedCheckOutDate: 'Wed 5 Mar 2021',
+    selectedCheckInDate: '',
+    selectedCheckOutDate: '',
     selectedNightsAmount: 1,
     selectedRoomsAmount: 0,
     tentativeReservation: false,
@@ -124,6 +124,17 @@ const App: React.FC = () => {
     style: 'currency',
     currency: 'USD',
   })
+
+  const formatToDateShort = (dateString: string): string => {
+    if (dateString === '') return ''
+    const date = new Date(dateString)
+    const dateFormat = new Intl.DateTimeFormat('en-US', {
+      weekday: 'short', 
+      day: 'numeric', 
+      month: 'short'
+    })
+    return dateFormat.format(date)
+  }
 
   return (
     <Flex 
@@ -496,13 +507,15 @@ const App: React.FC = () => {
 
         <OutputCard
           reservationNumber='952BE00B4990'
-          checkInDate='Thu, 11 Mar'
-          checkOutDate='Fri, 12 Mar'
+          checkInDate={formatToDateShort(datesAndRoomCardData.selectedCheckInDate)}
+          checkOutDate={formatToDateShort(datesAndRoomCardData.selectedCheckOutDate)}
           nightsStay={1}
           roomsStay={0}
           bookingValue={formatToCurrency.format(0)}
           accountBalance={formatToCurrency.format(0)}
-          departureBalance={formatToCurrency.format(0)} />
+          departureBalance={formatToCurrency.format(0)} 
+          cityTaxValue={formatToCurrency.format(0)}
+          totalValue={formatToCurrency.format(0)}/>
 
       </Stack>
 
