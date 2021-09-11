@@ -1,4 +1,9 @@
-import { Divider, Stack } from '@chakra-ui/react'
+import { 
+    Box, 
+    Divider, 
+    Heading, 
+    Stack,
+    Text } from '@chakra-ui/react'
 import React from 'react'
 
 const OutputCard: React.FC = () => {
@@ -19,7 +24,15 @@ const OutputCard: React.FC = () => {
             rounded={4}
             shadow='sm'>
 
-{/* //TODO Reservation Number */}
+        <Box>
+            <Text fontSize='xs' fontWeight='medium' color='gray.500'>
+                Reservation Number
+            </Text>
+{/* //? Props: Reservation ID */}
+            <Heading fontSize='xl'>
+                952BE00B4990
+            </Heading>
+        </Box>
 
 {/* //TODO Check in breadcrumb */}
 
