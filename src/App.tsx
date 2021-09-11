@@ -79,8 +79,8 @@ const App: React.FC = () => {
       'Wed 3 Mar 2021',
       'Thur 4 Mar 2021',
     ],
-    nightsAmount: 7,
-    roomsAmount: 30,
+    nightsAmount: 10,
+    roomsAmount: 10,
     selectedCheckInDate: '',
     selectedCheckOutDate: '',
     selectedNightsAmount: 1,
@@ -120,6 +120,7 @@ const App: React.FC = () => {
     selectedTitle: '',
   })
 
+  // Type-to-String formatting functions
   const formatToCurrency = (amount: number): string => {
     const currencyFormat = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -245,7 +246,6 @@ const App: React.FC = () => {
                 </FormLabel>
                 
                 <NumberInput 
-                  isDisabled 
                   defaultValue={0}
                   min={0} 
                   max={datesAndRoomCardData.roomsAmount}
@@ -520,8 +520,8 @@ const App: React.FC = () => {
             ? formatToDateShort(datesAndRoomCardData.selectedCheckOutDate) 
             : formatToDateShort(datesAndRoomCardData.checkOutDates[0]) 
           }
-          nightsStay={1}
-          roomsStay={0}
+          nightsStay={datesAndRoomCardData.selectedNightsAmount}
+          roomsStay={datesAndRoomCardData.selectedRoomsAmount}
           bookingValue={formatToCurrency(0)}
           accountBalance={formatToCurrency(0)}
           departureBalance={formatToCurrency(0)} 
