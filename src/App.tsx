@@ -3,13 +3,11 @@ import { Checkbox } from '@chakra-ui/checkbox'
 import { FormControl, FormLabel } from '@chakra-ui/form-control'
 import { InputGroup, Input, InputRightElement } from '@chakra-ui/input'
 import { 
-  Box,
   Flex, 
   HStack, 
   Spacer, 
   Stack,
-  Text, 
-  Wrap} from '@chakra-ui/layout'
+  Text} from '@chakra-ui/layout'
 import { NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper } from '@chakra-ui/number-input'
 import { Select } from '@chakra-ui/select'
 import React, { useState } from 'react'
@@ -123,8 +121,26 @@ const App: React.FC = () => {
   })
 
   return (
-    <Flex direction='column' minH='100vh' bg='gray.100'>
-      <Wrap p={10}>
+    <Flex 
+      direction='column' 
+      minH='100vh' 
+      bg='gray.100'>
+      <Stack 
+        direction={[
+          'column', 
+          null, 
+          null, 
+          'row'
+        ]} 
+        maxW={[
+          'full',
+          null,
+          null,
+          'full'
+        ]}
+        p={10}
+        spacing={6}>
+
         <Stack spacing={6}>
 
           <InputCard number={inputCardData[0].cardNumber} title={inputCardData[0].cardTitle}>
@@ -472,10 +488,9 @@ const App: React.FC = () => {
           </InputCard>
 
         </Stack>
-      
 
         <OutputCard />
-      </Wrap>
+      </Stack>
 
       <Spacer />
 
