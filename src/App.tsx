@@ -507,8 +507,16 @@ const App: React.FC = () => {
 
         <OutputCard
           reservationNumber='952BE00B4990'
-          checkInDate={formatToDateShort(datesAndRoomCardData.selectedCheckInDate)}
-          checkOutDate={formatToDateShort(datesAndRoomCardData.selectedCheckOutDate)}
+          checkInDate={
+            datesAndRoomCardData.selectedCheckInDate 
+            ? formatToDateShort(datesAndRoomCardData.selectedCheckInDate) 
+            : formatToDateShort(datesAndRoomCardData.checkInDates[0]) 
+          }
+          checkOutDate={
+            datesAndRoomCardData.selectedCheckOutDate
+            ? formatToDateShort(datesAndRoomCardData.selectedCheckOutDate) 
+            : formatToDateShort(datesAndRoomCardData.checkOutDates[0]) 
+          }
           nightsStay={1}
           roomsStay={0}
           bookingValue={formatToCurrency.format(0)}
