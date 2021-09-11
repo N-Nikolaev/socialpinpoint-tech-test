@@ -61,16 +61,18 @@ const OutputCard: React.FC<IProps> = ({
     return (
         <Stack
             direction='column'
-            spacing={5}
             h='max-content'
             maxW={[
                 'full',
                 null,
                 null,
-                '33%'
+                '34%',
+                null,
+                '500px'
             ]}
             w='full'
             p={6} 
+            spacing={5}
             bg='white' 
             rounded={4}
             shadow='sm'>
@@ -79,7 +81,7 @@ const OutputCard: React.FC<IProps> = ({
                 <Text fontSize='xs' fontWeight='medium' color='gray.500'>
                     Reservation Number
                 </Text>
-{/* //? Props: Reservation ID */}
+
                 <Heading fontSize='xl'>
                     {reservationNumber}
                 </Heading>
@@ -127,7 +129,6 @@ const OutputCard: React.FC<IProps> = ({
 
             <Divider />
 
-{/* //TODO State (Mappable): Cost Tally Items */}
             <Flex direction='row'>
                 <Text fontSize='sm'>
                     Booking Value

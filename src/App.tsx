@@ -144,7 +144,7 @@ const App: React.FC = () => {
     <Flex 
       direction='column' 
       minH='100vh' 
-      bg='gray.100'>
+      bg='gray.100' >
       <Stack 
         direction={[
           'column', 
@@ -152,12 +152,7 @@ const App: React.FC = () => {
           null, 
           'row'
         ]} 
-        maxW={[
-          'full',
-          null,
-          null,
-          'full'
-        ]}
+        justify='center'
         p={10}
         spacing={6}>
 
