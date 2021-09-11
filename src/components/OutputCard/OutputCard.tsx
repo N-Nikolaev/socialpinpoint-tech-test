@@ -1,7 +1,9 @@
 import { 
     Box, 
     Divider, 
+    Flex, 
     Heading, 
+    Spacer, 
     Stack,
     Text } from '@chakra-ui/react'
 import React from 'react'
@@ -37,8 +39,51 @@ const OutputCard: React.FC = () => {
 {/* //TODO Check in breadcrumb */}
 
             <Divider />
+{/* //TODO State (Mappable): Cost Tally Items */}
+            <Flex direction='row'>
+                <Text fontSize='sm'>
+                    Booking Value
+                </Text>
 
-{/* //TODO Cost tally */}
+                <Spacer />
+
+                <Text 
+                    fontSize='sm' 
+                    fontWeight='medium' 
+                    color='gray.400'>
+                    $0.00
+                </Text>
+            </Flex>
+
+            <Flex direction='row'>
+                <Text fontSize='sm'>
+                    Account Balance
+                </Text>
+
+                <Spacer />
+
+                <Text 
+                    fontSize='sm' 
+                    fontWeight='medium' 
+                    color='gray.400'>
+                    $0.00
+                </Text>
+            </Flex>
+
+            <Flex direction='row'>
+                <Text fontSize='sm'>
+                    Departyure Balance
+                </Text>
+
+                <Spacer />
+
+                <Text 
+                    fontSize='sm' 
+                    fontWeight='medium' 
+                    color='gray.400'>
+                    $0.00
+                </Text>
+            </Flex>
 
             <Divider />
 
