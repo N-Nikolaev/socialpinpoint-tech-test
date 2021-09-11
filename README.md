@@ -13,7 +13,7 @@ The following is a prototype dashboard created in accordance to the mock-up and 
 
 ![](src/assets/screenshots/desktop.png)
 
-**Tablet View - Ipad (768px)**
+**Tablet View - IPad (768px)**
 
 ![](src/assets/screenshots/tablet.png)
 
