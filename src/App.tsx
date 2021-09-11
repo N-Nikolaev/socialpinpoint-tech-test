@@ -120,10 +120,13 @@ const App: React.FC = () => {
     selectedTitle: '',
   })
 
-  const formatToCurrency = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  })
+  const formatToCurrency = (amount: number): string => {
+    const currencyFormat = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    })
+    return currencyFormat.format(amount)
+  }
 
   const formatToDateShort = (dateString: string): string => {
     if (dateString === '') return ''
@@ -519,11 +522,11 @@ const App: React.FC = () => {
           }
           nightsStay={1}
           roomsStay={0}
-          bookingValue={formatToCurrency.format(0)}
-          accountBalance={formatToCurrency.format(0)}
-          departureBalance={formatToCurrency.format(0)} 
-          cityTaxValue={formatToCurrency.format(0)}
-          totalValue={formatToCurrency.format(0)}/>
+          bookingValue={formatToCurrency(0)}
+          accountBalance={formatToCurrency(0)}
+          departureBalance={formatToCurrency(0)} 
+          cityTaxValue={formatToCurrency(0)}
+          totalValue={formatToCurrency(0)}/>
 
       </Stack>
 
