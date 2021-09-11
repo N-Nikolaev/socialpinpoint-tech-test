@@ -121,336 +121,278 @@ const App: React.FC = () => {
   })
 
   return (
-    <>
-    <Flex background='gray.100' p={10}>
-      <Stack spacing={6}>
+    <Flex direction='column' minH='100vh' bg='gray.100'>
+      <Flex p={10}>
+        <Stack spacing={6}>
 
-        <InputCard number={inputCardData[0].cardNumber} title={inputCardData[0].cardTitle}>
-          <HStack>
-            <FormControl id='checkIn'>
-              <FormLabel 
-                color='gray.700'
-                fontSize='sm'>
-                Check-in
-              </FormLabel>
+          <InputCard number={inputCardData[0].cardNumber} title={inputCardData[0].cardTitle}>
+            <HStack>
+              <FormControl id='checkIn'>
+                <FormLabel 
+                  color='gray.700'
+                  fontSize='sm'>
+                  Check-in
+                </FormLabel>
 
-              <Select 
-                bg='gray.50' 
-                fontSize='sm'
-                onChange={ e => setDatesAndRoomCardData({
-                  ...datesAndRoomCardData,
-                  selectedCheckInDate: e.target.value
-                })}>
-                {datesAndRoomCardData
-                  .checkInDates
-                  .map((date, idx) => {
-                    return (
-                      <option key={idx} value={date}>{date}</option>
-                    )
-                  })}
-              </Select>
-            </FormControl>
+                <Select 
+                  bg='gray.50' 
+                  fontSize='sm'
+                  onChange={ e => setDatesAndRoomCardData({
+                    ...datesAndRoomCardData,
+                    selectedCheckInDate: e.target.value
+                  })}>
+                  {datesAndRoomCardData
+                    .checkInDates
+                    .map((date, idx) => {
+                      return (
+                        <option key={idx} value={date}>{date}</option>
+                      )
+                    })}
+                </Select>
+              </FormControl>
 
-            <FormControl id='checkOut'>
-              <FormLabel 
-                color='gray.700'
-                fontSize='sm'>
-                Check-out
-              </FormLabel>
+              <FormControl id='checkOut'>
+                <FormLabel 
+                  color='gray.700'
+                  fontSize='sm'>
+                  Check-out
+                </FormLabel>
 
-              <Select 
-                bg='gray.50' 
-                fontSize='sm'
-                onChange={ e => setDatesAndRoomCardData({
-                  ...datesAndRoomCardData,
-                  selectedCheckOutDate: e.target.value
-                })}>
-                {datesAndRoomCardData
-                  .checkOutDates
-                  .map((date, idx) => {
-                    return (
-                      <option key={idx} value={date}>{date}</option>
-                    )
-                  })}
-              </Select>
-            </FormControl>
+                <Select 
+                  bg='gray.50' 
+                  fontSize='sm'
+                  onChange={ e => setDatesAndRoomCardData({
+                    ...datesAndRoomCardData,
+                    selectedCheckOutDate: e.target.value
+                  })}>
+                  {datesAndRoomCardData
+                    .checkOutDates
+                    .map((date, idx) => {
+                      return (
+                        <option key={idx} value={date}>{date}</option>
+                      )
+                    })}
+                </Select>
+              </FormControl>
 
-            <FormControl id='nights' w='fit-content'>
-              <FormLabel 
-                color='gray.700'
-                fontSize='sm'>
-                Nights
-              </FormLabel>
-              
-              <NumberInput 
-                defaultValue={1}
-                min={0} 
-                max={datesAndRoomCardData.nightsAmount}
-                bg='gray.50' 
-                fontSize='sm'
-                onChange={ num => setDatesAndRoomCardData({
-                  ...datesAndRoomCardData,
-                  selectedNightsAmount: parseInt(num)
-                })}>
-                <NumberInputField/>
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-            </FormControl>
+              <FormControl id='nights' w='fit-content'>
+                <FormLabel 
+                  color='gray.700'
+                  fontSize='sm'>
+                  Nights
+                </FormLabel>
+                
+                <NumberInput 
+                  defaultValue={1}
+                  min={0} 
+                  max={datesAndRoomCardData.nightsAmount}
+                  bg='gray.50' 
+                  fontSize='sm'
+                  onChange={ num => setDatesAndRoomCardData({
+                    ...datesAndRoomCardData,
+                    selectedNightsAmount: parseInt(num)
+                  })}>
+                  <NumberInputField/>
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+              </FormControl>
 
-            <FormControl id='rooms' w='fit-content'>
-              <FormLabel 
-                color='gray.700'
-                fontSize='sm'>
-                Rooms
-              </FormLabel>
-              
-              <NumberInput 
-                isDisabled 
-                defaultValue={0}
-                min={0} 
-                max={datesAndRoomCardData.roomsAmount}
-                bg='gray.50' 
-                fontSize='sm'
-                onChange={ num => setDatesAndRoomCardData({
-                  ...datesAndRoomCardData,
-                  selectedRoomsAmount: parseInt(num)
-                })}>
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-            </FormControl>
-          </HStack>
+              <FormControl id='rooms' w='fit-content'>
+                <FormLabel 
+                  color='gray.700'
+                  fontSize='sm'>
+                  Rooms
+                </FormLabel>
+                
+                <NumberInput 
+                  isDisabled 
+                  defaultValue={0}
+                  min={0} 
+                  max={datesAndRoomCardData.roomsAmount}
+                  bg='gray.50' 
+                  fontSize='sm'
+                  onChange={ num => setDatesAndRoomCardData({
+                    ...datesAndRoomCardData,
+                    selectedRoomsAmount: parseInt(num)
+                  })}>
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+              </FormControl>
+            </HStack>
 
-          <Checkbox onChange={ _ => setDatesAndRoomCardData({
-            ...datesAndRoomCardData,
-            tentativeReservation: !datesAndRoomCardData.tentativeReservation
-          })}>
-            <Text fontSize='sm'>Tentative Reservation</Text>
-          </Checkbox>
-        </InputCard>
-
-        <InputCard number={inputCardData[1].cardNumber} title={inputCardData[1].cardTitle}>
-          <Flex>
-            <Text
-              px={1}
-              fontSize='xs'
-              fontWeight='bold'
-              color='gray.600'
-              background='gray.200'
-              rounded={2}>
-              Room 1
-            </Text>
-
-            <Spacer />
-
-            <Checkbox onChange={ _ => setRoomRequirementsCardData({
-              ...roomRequirementsCardData,
-              doNotMove: !roomRequirementsCardData.doNotMove
+            <Checkbox onChange={ _ => setDatesAndRoomCardData({
+              ...datesAndRoomCardData,
+              tentativeReservation: !datesAndRoomCardData.tentativeReservation
             })}>
-              <Text fontSize='sm'>Do not move</Text>
+              <Text fontSize='sm'>Tentative Reservation</Text>
             </Checkbox>
+          </InputCard>
 
-          </Flex>
+          <InputCard number={inputCardData[1].cardNumber} title={inputCardData[1].cardTitle}>
+            <Flex>
+              <Text
+                px={1}
+                fontSize='xs'
+                fontWeight='bold'
+                color='gray.600'
+                background='gray.200'
+                rounded={2}>
+                Room 1
+              </Text>
 
-          <HStack>
-            <FormControl id='adults' w='fit-content'>
+              <Spacer />
+
+              <Checkbox onChange={ _ => setRoomRequirementsCardData({
+                ...roomRequirementsCardData,
+                doNotMove: !roomRequirementsCardData.doNotMove
+              })}>
+                <Text fontSize='sm'>Do not move</Text>
+              </Checkbox>
+
+            </Flex>
+
+            <HStack>
+              <FormControl id='adults' w='fit-content'>
+                <FormLabel 
+                  color='gray.700'
+                  fontSize='sm'>
+                  Adults
+                </FormLabel>
+                
+                <NumberInput 
+                  isDisabled 
+                  defaultValue={0}
+                  min={0}
+                  max={roomRequirementsCardData.adultsAmount} 
+                  bg='gray.50' 
+                  fontSize='sm'
+                  onChange={ num => setRoomRequirementsCardData({
+                    ...roomRequirementsCardData,
+                    selectedAdultsAmount: parseInt(num)
+                  })}>
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+              </FormControl>
+
+              <FormControl id='children' w='fit-content'>
+                <FormLabel 
+                  color='gray.700'
+                  fontSize='sm'>
+                  Children
+                </FormLabel>
+                
+                <NumberInput 
+                  isDisabled 
+                  defaultValue={0}
+                  min={0} 
+                  max={roomRequirementsCardData.childrenAmount}
+                  bg='gray.50' 
+                  fontSize='sm'
+                  onChange={ num => setRoomRequirementsCardData({
+                    ...roomRequirementsCardData,
+                    selectedChildrenAmount: parseInt(num)
+                  })}>
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+              </FormControl>
+
+              <FormControl id='infant' w='fit-content'>
+                <FormLabel 
+                  color='gray.700'
+                  fontSize='sm'>
+                  Infant
+                </FormLabel>
+                
+                <NumberInput 
+                  isDisabled 
+                  defaultValue={0}
+                  min={0} 
+                  max={roomRequirementsCardData.infantAmount}
+                  bg='gray.50' 
+                  fontSize='sm'
+                  onChange={ num => setRoomRequirementsCardData({
+                    ...roomRequirementsCardData,
+                    selectedInfantsAmount: parseInt(num)
+                  })}>
+                  <NumberInputField />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper />
+                    <NumberDecrementStepper />
+                  </NumberInputStepper>
+                </NumberInput>
+              </FormControl>
+            
+              <FormControl id='roomType'>
+                <FormLabel 
+                  color='gray.700'
+                  fontSize='sm'>
+                  Room type
+                </FormLabel>
+
+                <Select 
+                  bg='gray.50' 
+                  fontSize='sm'
+                  onChange={ e => setRoomRequirementsCardData({
+                    ...roomRequirementsCardData,
+                    selectedRoomType: e.target.value
+                  })}>
+                  {roomRequirementsCardData
+                    .roomType
+                    .map((type, idx) => {
+                      return (
+                        <option key={idx} value={type}>{type}</option>
+                      )
+                    })}
+                </Select>
+              </FormControl>
+
+              <FormControl id='roomAllocation'>
+                <FormLabel 
+                  color='gray.700'
+                  fontSize='sm'>
+                  Room allocation
+                </FormLabel>
+
+                <Select 
+                  bg='gray.50' 
+                  fontSize='sm'
+                  onChange={ e => setRoomRequirementsCardData({
+                    ...roomRequirementsCardData,
+                    selectedRoomAllocation: parseInt(e.target.value)
+                  })}>
+                  {roomRequirementsCardData
+                    .roomAllocation
+                    .map((allocation, idx) => {
+                      return (
+                        <option key={idx} value={allocation}>{allocation}</option>
+                      )
+                    })}
+                </Select>
+              </FormControl>
+            </HStack>
+          </InputCard>
+
+          <InputCard number={inputCardData[2].cardNumber} title={inputCardData[2].cardTitle}>
+            <FormControl id='company'>
               <FormLabel 
                 color='gray.700'
                 fontSize='sm'>
-                Adults
-              </FormLabel>
-              
-              <NumberInput 
-                isDisabled 
-                defaultValue={0}
-                min={0}
-                max={roomRequirementsCardData.adultsAmount} 
-                bg='gray.50' 
-                fontSize='sm'
-                onChange={ num => setRoomRequirementsCardData({
-                  ...roomRequirementsCardData,
-                  selectedAdultsAmount: parseInt(num)
-                })}>
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-            </FormControl>
-
-            <FormControl id='children' w='fit-content'>
-              <FormLabel 
-                color='gray.700'
-                fontSize='sm'>
-                Children
-              </FormLabel>
-              
-              <NumberInput 
-                isDisabled 
-                defaultValue={0}
-                min={0} 
-                max={roomRequirementsCardData.childrenAmount}
-                bg='gray.50' 
-                fontSize='sm'
-                onChange={ num => setRoomRequirementsCardData({
-                  ...roomRequirementsCardData,
-                  selectedChildrenAmount: parseInt(num)
-                })}>
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-            </FormControl>
-
-            <FormControl id='infant' w='fit-content'>
-              <FormLabel 
-                color='gray.700'
-                fontSize='sm'>
-                Infant
-              </FormLabel>
-              
-              <NumberInput 
-                isDisabled 
-                defaultValue={0}
-                min={0} 
-                max={roomRequirementsCardData.infantAmount}
-                bg='gray.50' 
-                fontSize='sm'
-                onChange={ num => setRoomRequirementsCardData({
-                  ...roomRequirementsCardData,
-                  selectedInfantsAmount: parseInt(num)
-                })}>
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-            </FormControl>
-          
-            <FormControl id='roomType'>
-              <FormLabel 
-                color='gray.700'
-                fontSize='sm'>
-                Room type
-              </FormLabel>
-
-              <Select 
-                bg='gray.50' 
-                fontSize='sm'
-                onChange={ e => setRoomRequirementsCardData({
-                  ...roomRequirementsCardData,
-                  selectedRoomType: e.target.value
-                })}>
-                {roomRequirementsCardData
-                  .roomType
-                  .map((type, idx) => {
-                    return (
-                      <option key={idx} value={type}>{type}</option>
-                    )
-                  })}
-              </Select>
-            </FormControl>
-
-            <FormControl id='roomAllocation'>
-              <FormLabel 
-                color='gray.700'
-                fontSize='sm'>
-                Room allocation
-              </FormLabel>
-
-              <Select 
-                bg='gray.50' 
-                fontSize='sm'
-                onChange={ e => setRoomRequirementsCardData({
-                  ...roomRequirementsCardData,
-                  selectedRoomAllocation: parseInt(e.target.value)
-                })}>
-                 {roomRequirementsCardData
-                  .roomAllocation
-                  .map((allocation, idx) => {
-                    return (
-                      <option key={idx} value={allocation}>{allocation}</option>
-                    )
-                  })}
-              </Select>
-            </FormControl>
-          </HStack>
-        </InputCard>
-
-        <InputCard number={inputCardData[2].cardNumber} title={inputCardData[2].cardTitle}>
-          <FormControl id='company'>
-            <FormLabel 
-              color='gray.700'
-              fontSize='sm'>
-              Company
-            </FormLabel>
-
-            <InputGroup 
-              bg='gray.50' 
-              fontSize='sm'>
-              <Input 
-                onChange={e => setGuestDetailsCardData({
-                  ...guestDetailsCardData,
-                  companyResult: e.target.value
-                })}/>
-              <InputRightElement>
-                <SearchIcon color='gray.500'/>
-              </InputRightElement>
-            </InputGroup>
-          </FormControl>
-
-          <Flex>
-            <Text
-              px={1}
-              fontSize='xs'
-              fontWeight='bold'
-              color='gray.600'
-              background='gray.200'
-              rounded={2}>
-              Room 1
-            </Text>
-          </Flex>
-
-          <HStack>
-            <FormControl id='title' minW='100px' w='fit-content'>
-              <FormLabel 
-                color='gray.700'
-                fontSize='sm'>
-                Title
-              </FormLabel>
-
-              <Select
-                bg='gray.50' 
-                fontSize='sm'
-                onChange={e => setGuestDetailsCardData({
-                  ...guestDetailsCardData,
-                  selectedTitle: e.target.value
-                })}>
-                {guestDetailsCardData
-                .titleList
-                .map((title, idx) => {
-                  return (
-                    <option key={idx} value={title}>{title}</option>
-                  )
-                })}
-              </Select>
-            </FormControl>
-
-            <FormControl id='firstAndLastName'>
-              <FormLabel 
-                color='gray.700'
-                fontSize='sm'>
-                First and last name
+                Company
               </FormLabel>
 
               <InputGroup 
@@ -459,22 +401,82 @@ const App: React.FC = () => {
                 <Input 
                   onChange={e => setGuestDetailsCardData({
                     ...guestDetailsCardData,
-                    firstAndLastName: e.target.value
+                    companyResult: e.target.value
                   })}/>
                 <InputRightElement>
                   <SearchIcon color='gray.500'/>
                 </InputRightElement>
               </InputGroup>
             </FormControl>
-          </HStack>
-        </InputCard>
 
-      </Stack>
-    
+            <Flex>
+              <Text
+                px={1}
+                fontSize='xs'
+                fontWeight='bold'
+                color='gray.600'
+                background='gray.200'
+                rounded={2}>
+                Room 1
+              </Text>
+            </Flex>
+
+            <HStack>
+              <FormControl id='title' minW='100px' w='fit-content'>
+                <FormLabel 
+                  color='gray.700'
+                  fontSize='sm'>
+                  Title
+                </FormLabel>
+
+                <Select
+                  bg='gray.50' 
+                  fontSize='sm'
+                  onChange={e => setGuestDetailsCardData({
+                    ...guestDetailsCardData,
+                    selectedTitle: e.target.value
+                  })}>
+                  {guestDetailsCardData
+                  .titleList
+                  .map((title, idx) => {
+                    return (
+                      <option key={idx} value={title}>{title}</option>
+                    )
+                  })}
+                </Select>
+              </FormControl>
+
+              <FormControl id='firstAndLastName'>
+                <FormLabel 
+                  color='gray.700'
+                  fontSize='sm'>
+                  First and last name
+                </FormLabel>
+
+                <InputGroup 
+                  bg='gray.50' 
+                  fontSize='sm'>
+                  <Input 
+                    onChange={e => setGuestDetailsCardData({
+                      ...guestDetailsCardData,
+                      firstAndLastName: e.target.value
+                    })}/>
+                  <InputRightElement>
+                    <SearchIcon color='gray.500'/>
+                  </InputRightElement>
+                </InputGroup>
+              </FormControl>
+            </HStack>
+          </InputCard>
+
+        </Stack>
+      
+      </Flex>
+
+      <Spacer />
+
+      <Taskbar />
     </Flex>
-
-    <Taskbar />
-    </>
   )
 }
 
