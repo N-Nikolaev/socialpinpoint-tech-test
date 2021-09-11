@@ -24,7 +24,7 @@ const Taskbar: React.FC = () => {
                         title: 'Successful Check in',
                         status: 'info',
                         position: 'top',
-                        duration: 4000,
+                        duration: 2000,
                         isClosable: true,
                     })
                 }}>
@@ -40,7 +40,7 @@ const Taskbar: React.FC = () => {
                         title: 'Successful Payment and Check in',
                         status: 'info',
                         position: 'top',
-                        duration: 4000,
+                        duration: 2000,
                         isClosable: true,
                     })
                 }}>
@@ -56,7 +56,7 @@ const Taskbar: React.FC = () => {
                         title: 'Successful Payment',
                         status: 'info',
                         position: 'top',
-                        duration: 4000,
+                        duration: 2000,
                         isClosable: true,
                     })
                 }}>
@@ -74,7 +74,7 @@ const Taskbar: React.FC = () => {
                         title: 'Confirmation cancelled',
                         status: 'warning',
                         position: 'top',
-                        duration: 4000,
+                        duration: 2000,
                         isClosable: true,
                     })
                 }}>
@@ -89,7 +89,7 @@ const Taskbar: React.FC = () => {
                         title: 'Saved and Confirmed',
                         status: 'success',
                         position: 'top',
-                        duration: 4000,
+                        duration: 2000,
                         isClosable: true,
                     })
                 }}>
