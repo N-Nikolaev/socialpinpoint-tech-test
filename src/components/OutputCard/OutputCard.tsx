@@ -72,7 +72,7 @@ const OutputCard: React.FC = () => {
 
             <Flex direction='row'>
                 <Text fontSize='sm'>
-                    Departyure Balance
+                    Departure Balance
                 </Text>
 
                 <Spacer />
@@ -104,7 +104,17 @@ const OutputCard: React.FC = () => {
 
             <Divider />
 
-{/* //TODO total */}
+            <Flex direction='row'>
+                <Text fontWeight='bold'>
+                    Total Charge
+                </Text>
+
+                <Spacer />
+
+                <Text fontWeight='bold'>
+                    $0.00
+                </Text>
+            </Flex>
 
         </Stack>
     )
