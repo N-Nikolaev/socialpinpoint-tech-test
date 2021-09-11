@@ -11,6 +11,30 @@ import {
 import React from 'react'
 import '../../assets/css/util.css'
 
+interface ReservationNumberData {
+    reservationNumber: string
+}
+
+interface DatesAndRoomData {
+    checkInDate: string
+    checkOutDate: string
+    nightsStay: number
+    roomsStay: number
+}
+
+type Currency = number
+
+
+interface CostTallyData {
+    bookingValue: Currency
+    accountBalance: Currency
+    departureBalance: Currency
+}
+
+interface CityTaxData {
+    cityTaxPercent: number
+}
+
 const OutputCard: React.FC = () => {
     return (
         <Stack
@@ -80,7 +104,7 @@ const OutputCard: React.FC = () => {
             </HStack>
 
             <Divider />
-            
+
 {/* //TODO State (Mappable): Cost Tally Items */}
             <Flex direction='row'>
                 <Text fontSize='sm'>
