@@ -1,12 +1,15 @@
+import { ChevronRightIcon } from '@chakra-ui/icons'
 import { 
     Box, 
     Divider, 
     Flex, 
     Heading, 
+    HStack, 
     Spacer, 
     Stack,
     Text } from '@chakra-ui/react'
 import React from 'react'
+import '../../assets/css/util.css'
 
 const OutputCard: React.FC = () => {
     return (
@@ -21,24 +24,63 @@ const OutputCard: React.FC = () => {
                 '33%'
             ]}
             w='full'
-            p={8} 
+            p={6} 
             bg='white' 
             rounded={4}
             shadow='sm'>
 
-        <Box>
-            <Text fontSize='xs' fontWeight='medium' color='gray.500'>
-                Reservation Number
-            </Text>
+            <Box>
+                <Text fontSize='xs' fontWeight='medium' color='gray.500'>
+                    Reservation Number
+                </Text>
 {/* //? Props: Reservation ID */}
-            <Heading fontSize='xl'>
-                952BE00B4990
-            </Heading>
-        </Box>
+                <Heading fontSize='xl'>
+                    952BE00B4990
+                </Heading>
+            </Box>
 
-{/* //TODO Check in breadcrumb */}
+            <HStack align='center' justify='space-between'>
+                <Box>
+                    <Text fontSize='sm'>
+                        Check in
+                    </Text>
+                    <Text fontSize='sm' fontWeight='bold' className='util--whitespace'>
+                        Thu, 11 Mar
+                    </Text>
+                </Box>
+
+                <ChevronRightIcon />
+
+                <Box>
+                    <Text fontSize='sm'>
+                        Check out
+                    </Text>
+                    <Text fontSize='sm' fontWeight='bold' className='util--whitespace'>
+                        Fri, 12 Mar
+                    </Text>
+                </Box>
+
+                <Box>
+                    <Text fontSize='sm'>
+                        Nights
+                    </Text>
+                    <Text fontSize='sm' fontWeight='bold' className='util--whitespace'>
+                        1
+                    </Text>
+                </Box>
+
+                <Box>
+                    <Text fontSize='sm'>
+                        Rooms
+                    </Text>
+                    <Text fontSize='sm' fontWeight='bold' className='util--whitespace'>
+                        {' '}
+                    </Text>
+                </Box>
+            </HStack>
 
             <Divider />
+            
 {/* //TODO State (Mappable): Cost Tally Items */}
             <Flex direction='row'>
                 <Text fontSize='sm'>
