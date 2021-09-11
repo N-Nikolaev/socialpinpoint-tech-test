@@ -49,13 +49,6 @@ The following is a prototype dashboard created in accordance to the mock-up and 
     yarn dev
     ```
 
-## Technologies Used
-
--   [Vite](https://vitejs.dev/) - Build Tool
--   [TypeScript](https://www.typescriptlang.org/) - Static Typing Language
--   [ReactJS](https://reactjs.org/) - JavaScript Library / Framework
--   [Chakra](https://chakra-ui.com/) - Modular Component Library
-
 ## Features
 
 -   [x] Input cards gather input through interactions
@@ -63,3 +56,11 @@ The following is a prototype dashboard created in accordance to the mock-up and 
 -   [x] Feedback on Taskbar button interactions
 -   [x] Tablet responsive
 -   [ ] Mobile responsive
+
+## Technologies Used
+
+-   [Vite](https://vitejs.dev/) - Build Tool
+-   [TypeScript](https://www.typescriptlang.org/) - Static Typing Language
+-   [ReactJS](https://reactjs.org/) - JavaScript Library / Framework
+-   [Chakra](https://chakra-ui.com/) - Modular Component Library
+
