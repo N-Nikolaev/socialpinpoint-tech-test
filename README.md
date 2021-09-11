@@ -4,8 +4,8 @@ The following is a prototype dashboard created in accordance to the mock-up and 
 
 ## Links
 
--   Live Demo: [GitHub Pages](https://n-nikolaev.github.io/socialpinpoint-tech-test)
--   Project Repository: [GitHub Repository](https://github.com/N-Nikolaev/socialpinpoint-tech-test)
+-   Live Demo: [GitHub Pages](https://n-nikolaev.github.io/socialpinpoint-tech-test/)
+-   Project Repository: [GitHub Repository](https://github.com/N-Nikolaev/socialpinpoint-tech-test/)
 
 ## Screenshots
 
