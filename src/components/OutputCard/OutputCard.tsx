@@ -22,7 +22,7 @@ interface DatesAndRoomData {
     roomsStay: number
 }
 
-type Currency = number
+type Currency = string
 
 
 interface CostTallyData {
@@ -32,10 +32,32 @@ interface CostTallyData {
 }
 
 interface CityTaxData {
-    cityTaxPercent: number
+    cityTaxValue: Currency
 }
 
-const OutputCard: React.FC = () => {
+interface TotalCharge {
+    totalValue: Currency
+}
+
+interface IProps extends 
+    ReservationNumberData, 
+    DatesAndRoomData, 
+    CostTallyData, 
+    CityTaxData,
+    TotalCharge {}
+
+const OutputCard: React.FC<IProps> = ({
+    reservationNumber,
+    checkInDate,
+    checkOutDate,
+    nightsStay,
+    roomsStay,
+    bookingValue,
+    accountBalance,
+    departureBalance,
+    cityTaxValue,
+    totalValue
+}) => {
     return (
         <Stack
             direction='column'
@@ -59,7 +81,7 @@ const OutputCard: React.FC = () => {
                 </Text>
 {/* //? Props: Reservation ID */}
                 <Heading fontSize='xl'>
-                    952BE00B4990
+                    {reservationNumber}
                 </Heading>
             </Box>
 
@@ -69,7 +91,7 @@ const OutputCard: React.FC = () => {
                         Check in
                     </Text>
                     <Text fontSize='sm' fontWeight='bold' className='util--whitespace'>
-                        Thu, 11 Mar
+                        {checkInDate || ' '}
                     </Text>
                 </Box>
 
@@ -80,7 +102,7 @@ const OutputCard: React.FC = () => {
                         Check out
                     </Text>
                     <Text fontSize='sm' fontWeight='bold' className='util--whitespace'>
-                        Fri, 12 Mar
+                        {checkOutDate || ' '}
                     </Text>
                 </Box>
 
@@ -89,7 +111,7 @@ const OutputCard: React.FC = () => {
                         Nights
                     </Text>
                     <Text fontSize='sm' fontWeight='bold' className='util--whitespace'>
-                        1
+                        {nightsStay || ' '}
                     </Text>
                 </Box>
 
@@ -98,7 +120,7 @@ const OutputCard: React.FC = () => {
                         Rooms
                     </Text>
                     <Text fontSize='sm' fontWeight='bold' className='util--whitespace'>
-                        {' '}
+                        {roomsStay || ' '}
                     </Text>
                 </Box>
             </HStack>
@@ -117,7 +139,7 @@ const OutputCard: React.FC = () => {
                     fontSize='sm' 
                     fontWeight='medium' 
                     color='gray.400'>
-                    $0.00
+                    {bookingValue}
                 </Text>
             </Flex>
 
@@ -132,7 +154,7 @@ const OutputCard: React.FC = () => {
                     fontSize='sm' 
                     fontWeight='medium' 
                     color='gray.400'>
-                    $0.00
+                    {accountBalance}
                 </Text>
             </Flex>
 
@@ -147,7 +169,7 @@ const OutputCard: React.FC = () => {
                     fontSize='sm' 
                     fontWeight='medium' 
                     color='gray.400'>
-                    $0.00
+                    {departureBalance}
                 </Text>
             </Flex>
 
@@ -164,7 +186,7 @@ const OutputCard: React.FC = () => {
                     fontSize='sm' 
                     fontWeight='medium' 
                     color='gray.400'>
-                    $0.00
+                    {cityTaxValue}
                 </Text>
             </Flex>
 
@@ -178,7 +200,7 @@ const OutputCard: React.FC = () => {
                 <Spacer />
 
                 <Text fontWeight='bold'>
-                    $0.00
+                    {totalValue}
                 </Text>
             </Flex>
 
