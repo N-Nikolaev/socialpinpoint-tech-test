@@ -120,6 +120,11 @@ const App: React.FC = () => {
     selectedTitle: '',
   })
 
+  const formatToCurrency = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  })
+
   return (
     <Flex 
       direction='column' 
@@ -489,7 +494,16 @@ const App: React.FC = () => {
 
         </Stack>
 
-        <OutputCard />
+        <OutputCard
+          reservationNumber='952BE00B4990'
+          checkInDate='Thu, 11 Mar'
+          checkOutDate='Fri, 12 Mar'
+          nightsStay={1}
+          roomsStay={0}
+          bookingValue={formatToCurrency.format(0)}
+          accountBalance={formatToCurrency.format(0)}
+          departureBalance={formatToCurrency.format(0)} />
+
       </Stack>
 
       <Spacer />
